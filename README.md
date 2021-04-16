@@ -1,53 +1,165 @@
 # Clase Big Data
 
+## Indice
+
+* [Software](#Software)
+* [Comandos básicos](#Comandos-basicos)
+* [Comandos Hadoop](#Comandos-Hadoop)
+* [Permisos en linux](#Permisos-en-linux)
+
+## Software
+
 Los softwares necesarios para la realizacion de esta asignatura son:
 
-* VirtualBox
-* Hadoop
-* Cloudera
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+* [Cloudera](https://drive.google.com/drive/u/1/folders/12MVmy7d8DTFxiJ_tgtHshFEuZmq8SPbe) - Maquina virtual entregada por la institución
 
-## Primeros pasos
+## Comandos básicos
 
-Descargar el archivo [**Titanic.txt**](https://github.com/Pelu-k/clase-big-data/tree/main/Recursos)
+Moverse entre carpetas
 
-En la terminal ejecutar el comando para crear una carpeta donde se guardara el archivo
-
-> mkdir big-data
+> **cd** "nombre carpeta" 
 >
-> cd big-data
+> **cd** ..
 
-Ahora ejecutamos, para poder ver lo que hay a nivel de Hadoop
+Crear carpetas
 
-> hadoop fs -ls /
+> **mkdir** "nombre de la carpeta"
 
-Creamos una carpeta en Hadoop
+Listar directorios y archivos
 
-> hadoop fs -mkdir /big-destino
+> **ls**
+>
+> dir
 
-Le damos todos los permisos a la carpeta
+Modificar permisos
 
-> hadoop fs -chmod +rwx /big-destino
+> **chmod** +rwx
+>
+> **chmod** -rwx
 
-Ahora copiamos el archivo Titanic desde linux a hadoop
+## Comandos Hadoop
 
-> hadoop fs -put /home/cloudera/big-data/Titanic.txt /big-destino
+Hay que tener en cuenta que para interactuar con hadoop desde la terminal todos los comandos deben comenzar con:
 
-Le damos todos los permisos al archivo Titanic *(solo por si a caso)*
+> **hadoop fs**
 
-> hadoop fs -chmod +rwx /big-destino/Titanic.txt
+Listar directorios
 
-Abrimos Hue, seleccionamos la lupa con el signo +, ahora que estamos en las *Collection* precionamos el signo + para cargar nuestro archivo.
+> hadoop fs **-ls /**
 
-Indicamos la dirección de nuestro archivo, para eso debemos retroseder en el directorio para ir a la raiz de hadoop, para eso seleccionamos la carpeta .. hasta encontrar nuestra carpeta *big-destino*, la seleccionamos y cargamos nuestro archivo.
+Crear carpetas
 
-Ahora le damos al boton *next* y comprobamos que se ven los datos y finalmente presionamos *submit* para guardar el archivo en Hue.
+> hadoop fs **-mkdir "/nombre-carpeta"**
 
-Ahora presionamos la opción HDFS, comenzamos a retroceder hasta el directorio raiz (/) y seleccionamos la carpeta *big-destino* y seleccionamos el archivo *Titanic.txt*, el archivo no tiene cabeceras por lo que hay que agregarlos, para eso debemos seleccionar la opción de editar y agregar en la primera linea *clase,edad,sexo,sobrevivio* y guardamos.
+Copiar archivos desde linux a hadoop
 
-Ahora seleccionamos la opción de **SQL** y seleccionamos *default*, presionamos el signo + y buscamos el archivo *Titanic.txt* de la carpeta *big-destino*.
+> hadoop fs **-put /directorio/de/origen /directorio/destino**
 
-Una vez cargado, y no dio ningun error al cargar el archivo, seleccionamos la opción *Query*, *Impala* y escribimos:
+Agregar permisos *(con este comando se estan agregando todos los permisos)*
 
-> SELECT * FROM default.titanic
+> hadoop fs **-chmod +rwx "nombre carpeta o archivo"**
 
-Se nos deberia mostrar toda la información de la tabla titanic.
+Eliminar permisos *(con este comando se estan eliminando todos los permisos)*
+
+> hadoop fs **-chmod -rwx "nombre carpeta o archivo"**
+
+## Permisos en linux
+
+<table>
+    <thead>
+        <tr>
+            <th>Permiso</th>
+            <th>Valor Octal</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>---</td>
+            <td>0</td>
+            <td>No tiene ningun permiso</td>
+        </tr>
+        <tr>
+            <td>--x</td>
+            <td>1</td>
+            <td>Solo permiso de ejecución</td>
+        </tr>
+        <tr>
+            <td>-w-</td>
+            <td>2</td>
+            <td>Solo permiso de escritura</td>
+        </tr>
+        <tr>
+            <td>-wx</td>
+            <td>3</td>
+            <td>Permisos de escritura y ejecución</td>
+        </tr>
+        <tr>
+            <td>r--</td>
+            <td>4</td>
+            <td>Solo permiso de lectura</td>
+        </tr>
+        <tr>
+            <td>r-x</td>
+            <td>5</td>
+            <td>Permisos de lectura y ejecución</td>
+        </tr>
+        <tr>
+            <td>rw-</td>
+            <td>6</td>
+            <td>Permisos de lectura y escritura</td>
+        </tr>
+        <tr>
+            <td>rwx</td>
+            <td>7</td>
+            <td>Todos los permisos establecidos, lectura, escritura y ejecución</td>
+        </tr>
+    </tbody>
+</table>
+
+Hay que tener en cuenta que los permisos en linux estan divididos en 3: **propietario**, **grupo** y **otros**
+
+<table>
+    <thead>
+        <tr>
+            <th>Permiso</th>
+            <th>Valor</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>rw- --- ---</td>
+            <td>600</td>
+            <td>El propietario tiene permisos de lectura y escritura</td>
+        </tr>
+        <tr>
+            <td>rwx --x --x</td>
+            <td>711</td>
+            <td>El propietario lectura, escritura y ejecución, el grupo y otros solo ejecución</td>
+        </tr>
+        <tr>
+            <td>rwx r-x r-x</td>
+            <td>755</td>
+            <td>El propietario lectura, escritura y ejecución, el grupo y otros pueden leer y ejecutar el archivo</td>
+        </tr>
+        <tr>
+            <td>rwx rwx rwx</td>
+            <td>777</td>
+            <td>El archivo puede ser leído, escrito y ejecutado por quien sea</td>
+        </tr>
+        <tr>
+            <td>r-- --- ---</td>
+            <td>400</td>
+            <td>Solo el propietario puede leer el archivo, pero ni el mismo puede modificarlo o ejecutarlo y por supuesto ni el grupo ni otros pueden hacer nada en el</td>
+        </tr>
+        <tr>
+            <td>rw- r-- ---</td>
+            <td>640</td>
+            <td>El usuario propietario puede leer y escribir, el grupo puede leer el archivo y otros no pueden hacer nada</td>
+        </tr>
+    </tbody>
+</table>
+
+[Fuente de la información sobre los permisos](https://blog.desdelinux.net/permisos-y-derechos-en-linux/)
