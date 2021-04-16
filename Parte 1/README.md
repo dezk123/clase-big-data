@@ -1,6 +1,6 @@
 # Parte 1: Primeros pasos en Cloudera
 
-Descargar el archivo [**Titanic.txt**](https://github.com/Pelu-k/clase-big-data/tree/main/Recursos)
+Descargar el archivo [**Titanic.txt**](https://github.com/Pelu-k/clase-big-data/tree/main/Parte%201/Recursos)
 
 En la terminal ejecutar el comando para crear una carpeta donde se guardara el archivo
 
