@@ -42,9 +42,9 @@ Indicamos la dirección de nuestro archivo, para eso debemos retroseder en el di
 
 Ahora le damos al boton *next* y comprobamos que se ven los datos y finalmente presionamos *submit* para guardar el archivo en Hue.
 
-Ahora presionamos la opción HDFS, comenzamos a retroceder hasta encontrar la carpeta *big-destino* y seleccionamos el archivo *Titanic.txt*, el archivo no tiene cabeceras por lo que hay que agregarlos, para eso debemos seleccionar la opción de editar y agregar en la primera linea *clase,edad,sexo,sobrevivio* y guardamos.
+Ahora presionamos la opción HDFS, comenzamos a retroceder hasta el directorio raiz (/) y seleccionamos la carpeta *big-destino* y seleccionamos el archivo *Titanic.txt*, el archivo no tiene cabeceras por lo que hay que agregarlos, para eso debemos seleccionar la opción de editar y agregar en la primera linea *clase,edad,sexo,sobrevivio* y guardamos.
 
-Ahora seleccionamos la opción de BBDD y seleccionamos *default*, presionamos el signo + y buscamos el archivo *Titanic.txt* de la carpeta *big-destino*.
+Ahora seleccionamos la opción de **SQL** y seleccionamos *default*, presionamos el signo + y buscamos el archivo *Titanic.txt* de la carpeta *big-destino*.
 
 Una vez cargado, y no dio ningun error al cargar el archivo, seleccionamos la opción *Query*, *Impala* y escribimos:
 
