@@ -7,3 +7,4 @@ Los softwares necesarios para la realizacion de esta asignatura son:
 * Cloudera
 
 ## Primeros pasos
+
