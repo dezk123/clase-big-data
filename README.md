@@ -6,6 +6,8 @@
 * [Comandos básicos](#Comandos-basicos)
 * [Comandos Hadoop](#Comandos-Hadoop)
 * [Permisos en linux](#Permisos-en-linux)
+* Contenidos de clase
+    * [Parte 1 : Primeros pasos en Cloudera](https://github.com/Pelu-k/clase-big-data/tree/main/Parte%201)
 
 ## Software
 
